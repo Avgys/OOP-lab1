@@ -46,7 +46,7 @@ namespace OOP_lab1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (LineList.Count >= 0)
+            if (LineList.Count > 0)
             {
                 Canva.Children.Remove(LineList[LineList.Count - 1]);
                 LineList.RemoveAt(LineList.Count - 1);
