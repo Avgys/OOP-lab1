@@ -329,5 +329,20 @@ namespace OOP_lab1
         {
             area.SetFigure("Polygon");
         }
+
+        private void Rectangle_Click(object sender, RoutedEventArgs e)
+        {
+            area.SetFigure("Rectangle");
+        }
+
+        private void Ellipes_Click(object sender, RoutedEventArgs e)
+        {
+            area.SetFigure("Ellipse");
+        }
+
+        private void Line_Click(object sender, RoutedEventArgs e)
+        {
+            area.SetFigure("Line");
+        }
     }
 }

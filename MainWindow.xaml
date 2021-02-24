@@ -20,12 +20,12 @@
         </Canvas>
         <Button x:Name="UndoButton" Content="Undo" HorizontalAlignment="Left" Margin="36,288,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="20"/>
         <Button x:Name="ClearAllButton" Content="Clear all" HorizontalAlignment="Left" Margin="36,313,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_1" Height="20"/>
-        <Button x:Name="Line" Content="Line" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21"/>
-        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,50,0,0" Width="83" Height="25" Grid.RowSpan="2"/>
+        <Button x:Name="Line" Content="Line" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21" Click="Line_Click"/>
+        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,0" Width="83" Height="25" Grid.RowSpan="2"/>
         <Button x:Name="Re_Undo" Content="Re-Undo" HorizontalAlignment="Left" Margin="36,263,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Re_Undo_Click" Height="20"/>
         <Button x:Name="BrokenLine" Content="Broken Line" HorizontalAlignment="Left" Margin="10,47,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21"/>
-        <Button x:Name="Rectangle" Content="Rectangle" HorizontalAlignment="Left" Margin="10,82,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21"/>
-        <Button x:Name="Ellipes" Content="Ellipse" HorizontalAlignment="Left" Margin="10,119,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21"/>
+        <Button x:Name="Rectangle" Content="Rectangle" HorizontalAlignment="Left" Margin="10,82,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21" Click="Rectangle_Click"/>
+        <Button x:Name="Ellipes" Content="Ellipse" HorizontalAlignment="Left" Margin="10,119,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21" Click="Ellipes_Click"/>
         <Button x:Name="Polygon" Content="Polygon" HorizontalAlignment="Left" Margin="10,159,0,0" Grid.Row="1" VerticalAlignment="Top" Width="66" Height="21" Click="Polygon_Click"/>
     </Grid>
 </Window>
