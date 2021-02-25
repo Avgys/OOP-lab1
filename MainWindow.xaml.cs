@@ -62,7 +62,7 @@ namespace OOP_lab1
                 StrokeThickness = 1,
                 Stroke = Brushes.Black
             };
-            
+
             //groupItem.Children.Add(line);
             FigureList.Add(line);
             Canva.Children.Add(line);
@@ -78,16 +78,16 @@ namespace OOP_lab1
         {
             if (ChosenFigure == "Polygon")
                 pointCollection = new PointCollection();
-               DrawPolygon();
+            DrawPolygon();
         }
 
         public void ClearPos()
         {
 
-        }        
+        }
 
         private void DrawBrokenLine()
-        {            
+        {
             if (secondPosition.X > 0 && secondPosition.Y > 0)
             {
                 Line line = new Line()
@@ -107,7 +107,7 @@ namespace OOP_lab1
                 firstPosition = secondPosition;
                 secondPosition.X = -1;
                 secondPosition.Y = -1;
-            }            
+            }
         }
 
         private void DrawPolygon()
@@ -157,9 +157,9 @@ namespace OOP_lab1
         }
 
         public void DrawEllipse()
-        {           
+        {
             Ellipse rect = new Ellipse()
-            {                   
+            {
                 StrokeThickness = 2,
                 //X1 = firstPosition.X,
                 //X2 = secondPosition.X,
@@ -170,9 +170,9 @@ namespace OOP_lab1
                 StrokeStartLineCap = PenLineCap.Round,
                 StrokeEndLineCap = PenLineCap.Round,
                 Stroke = Brushes.Black
-                
+
             };
-            
+
             if (firstPosition.Y < secondPosition.Y)
                 Canvas.SetTop(rect, firstPosition.Y);
             else
@@ -196,9 +196,9 @@ namespace OOP_lab1
             if (ChosenFigure == "Line") DrawLine();
             if (ChosenFigure == "Rectangle") DrawRectangle();
             if (ChosenFigure == "Ellipse") DrawEllipse();
-            //if (ChosenFigure == "Polygon") DrawPolygon();
+            if (ChosenFigure == "Polygon") DrawPolygon();
             if (ChosenFigure == "BrokenLine") DrawBrokenLine();
-            
+
         }
 
         public void RemoveLastAdded()
@@ -212,9 +212,9 @@ namespace OOP_lab1
 
         public void BackLastRemoved()
         {
-            if (FigureList.Count-1 > CurrStep)
+            if (FigureList.Count - 1 > CurrStep)
             {
-                Canva.Children.Add(FigureList[CurrStep+1]);
+                Canva.Children.Add(FigureList[CurrStep + 1]);
                 CurrStep++;
             }
         }
@@ -259,12 +259,12 @@ namespace OOP_lab1
         Point secondPosition = new Point();
         Paint area;
         public MainWindow()
-        {   
+        {
             InitializeComponent();
             area = new Paint(Canva);
         }
 
-        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -272,8 +272,8 @@ namespace OOP_lab1
         }
 
         private void Canva_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {   
-            area.Set1Pos(e.GetPosition(Canva)); 
+        {
+            area.Set1Pos(e.GetPosition(Canva));
         }
 
 
@@ -282,15 +282,15 @@ namespace OOP_lab1
             area.Set2Pos(e.GetPosition(Canva));
             area.DrawCurrentFigure();
             //DrawLine(e);
-            
+
         }
 
         bool needToDraw = false;
-         
+
         private void Canva_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            
-        }       
+
+        }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -343,6 +343,11 @@ namespace OOP_lab1
         private void Line_Click(object sender, RoutedEventArgs e)
         {
             area.SetFigure("Line");
+        }
+
+        private void BrokenLine_Click(object sender, RoutedEventArgs e)
+        {
+            area.SetFigure("BrokenLine");
         }
     }
 }
