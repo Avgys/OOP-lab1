@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 using System.Windows.Media;
 
 namespace Figures
-{   
+{
     public class AbstractFigure : Object
     {
         public static Canvas AreaToDraw;
@@ -21,14 +21,15 @@ namespace Figures
         public Brush FillColor;
         static protected Point NullPos;
 
-        
+
         public virtual Point Draw()
         {
-            return NullPos; 
+            return NullPos;
         }
 
         public virtual AbstractFigure GetNew()
         {
+
             FigureArea = new Canvas();
             return new AbstractFigure(AreaToDraw);
         }

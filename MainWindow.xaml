@@ -44,5 +44,7 @@
                 <MenuItem Header="UnloadPlugin" Height="21" Margin="0,0,7,0"/>
             </MenuItem>
         </Menu>
+        <Label Content="Border" Grid.Column="1" HorizontalAlignment="Left" Margin="253,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fill" Grid.Column="1" HorizontalAlignment="Left" Margin="353,10,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
