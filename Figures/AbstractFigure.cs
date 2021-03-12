@@ -10,26 +10,36 @@ using System.Windows.Media;
 
 namespace Figures
 {   
-    public class AbstractFigure  {
+    public class AbstractFigure : Object
+    {
         public static Canvas AreaToDraw;
         public Canvas FigureArea;
-        public Point prevPos;
-        public Point newPos;
-        public double StrokeThickness;
-        public Brush Stroke;      
+        public Point PrevPos;
+        public Point NewPos;
+        public double Thickness;
+        public Brush BorderColor;
+        public Brush FillColor;
+        static protected Point NullPos;
+
+        
         public virtual Point Draw()
         {
-            return new Point()
-            {
-                X = -1,
-                Y = -1
-            }; 
+            return NullPos; 
+        }
+
+        public virtual AbstractFigure GetNew()
+        {
+            FigureArea = new Canvas();
+            return new AbstractFigure(AreaToDraw);
         }
 
         public AbstractFigure(Canvas Zone)
         {
+            NullPos.X = -1;
+            NullPos.Y = -1;
             AreaToDraw = Zone;
-            FigureArea = new Canvas();
+            //FigureArea.Width = Zone.Width;
+            //FigureArea.Height = Zone.Height;
         }
     }
 }

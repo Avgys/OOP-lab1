@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Threading.Tasks;
-using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Figures
 {
@@ -18,31 +13,30 @@ namespace Figures
         {
         }
 
+        public override AbstractFigure GetNew()
+        {
+            return new ClassLine(AreaToDraw)
+            {
+                FigureArea = new Canvas()
+            };
+        }
+
         public override Point Draw()
         {
             line = new Line()
             {
-                X1 = prevPos.X,
-                X2 = newPos.X,
-                Y1 = prevPos.Y,
-                Y2 = newPos.Y,
+                X1 = PrevPos.X,
+                X2 = NewPos.X,
+                Y1 = PrevPos.Y,
+                Y2 = NewPos.Y,
                 StrokeStartLineCap = PenLineCap.Round,
                 StrokeEndLineCap = PenLineCap.Round,
-                StrokeThickness = 20,
-                Stroke = Brushes.Black
-
+                StrokeThickness = Thickness,
+                Stroke = BorderColor,
+                Fill = FillColor
             };
-
-            FigureArea = new Canvas();
             FigureArea.Children.Add(line);
-            AreaToDraw.Children.Add(FigureArea);
-            return new Point()
-            {
-                X = -1,
-                Y = -1
-            };
+            return NullPos;
         }
-
-
     }
 }

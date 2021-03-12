@@ -2,13 +2,13 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
-
+using System.Windows.Media;
 
 namespace Paint_OOP_lab
 {
     using DrawNamespace;
     public partial class MainWindow : Window
-    {      
+    {
         Paint paint;
         public MainWindow()
         {
@@ -18,34 +18,43 @@ namespace Paint_OOP_lab
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //paint..RemoveLastAdded();
             paint.rewind.Backward();
         }
 
         private void Canva_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            paint.SetPos(e.GetPosition(Canva));
+            //paint.SetPos(e.GetPosition(Canva));
         }
 
 
         private void Canva_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             paint.SetPos(e.GetPosition(Canva));
-            paint.DrawCurrentFigure();
-        }        
+            SolidColorBrush LineBrush;
+            if (SelectedLineColor.SelectedColor == null)
+            {
+                LineBrush = Brushes.Black;
+            }
+            else
+                LineBrush = new SolidColorBrush((Color)SelectedLineColor.SelectedColor);
+            SolidColorBrush FillBrush;
+            if (SelectedFillColor.SelectedColor == null)
+            {
+                FillBrush = Brushes.White;
+            }
+            else
+                FillBrush = new SolidColorBrush((Color)SelectedFillColor.SelectedColor);
+            paint.DrawCurrentFigure(Convert.ToDouble(StrokeWidth.Text), FillBrush, LineBrush);
+        }
 
         private void Canva_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Int32.Parse(StrokeWidth.Text); 
-
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.Equals(Key.Escape))
             {
-                //paint.EndDraw();
-                //needToDraw = false;
                 paint.ClearPos();
             }
         }
@@ -67,7 +76,7 @@ namespace Paint_OOP_lab
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
         {
-            //paint.SetFigure(new ClassPolygon(Canva));
+            paint.SetFigure(new ClassPolygon(Canva));
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
@@ -87,12 +96,12 @@ namespace Paint_OOP_lab
 
         private void BrokenLine_Click(object sender, RoutedEventArgs e)
         {
-            //paint.SetFigure("BrokenLine");
+            paint.SetFigure(new ClassBrokenLine(Canva));
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-           Program.Close();
+            Program.Close();
         }
     }
 }

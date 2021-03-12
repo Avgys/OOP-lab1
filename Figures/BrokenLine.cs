@@ -7,26 +7,44 @@ namespace Figures
 {
     class ClassBrokenLine : AbstractFigure
     {
+        Line line;
+
+        public override AbstractFigure GetNew()
+        {
+            Canvas buff = FigureArea;
+            if (buff == null)
+            {
+                return new ClassBrokenLine(AreaToDraw)
+                {
+                    FigureArea = new Canvas()
+                };
+            }
+            else
+                return new ClassBrokenLine(AreaToDraw)
+                {
+                    FigureArea = buff
+                };
+        }
+
         public override Point Draw()
         {
-            if (newPos.X > 0 && newPos.Y > 0)
+            if (NewPos.X > 0 && NewPos.Y > 0)
             {
-                Line line = new Line()
+                line = new Line()
                 {
-                    X1 = prevPos.X,
-                    X2 = newPos.X,
-                    Y1 = prevPos.Y,
-                    Y2 = newPos.Y,
+                    X1 = PrevPos.X,
+                    X2 = NewPos.X,
+                    Y1 = PrevPos.Y,
+                    Y2 = NewPos.Y,
                     StrokeStartLineCap = PenLineCap.Round,
                     StrokeEndLineCap = PenLineCap.Round,
-                    StrokeThickness = 2,
-                    Stroke = Brushes.Black
+                    StrokeThickness = Thickness,
+                    Stroke = BorderColor,
+                    Fill = FillColor
                 };
-                //Canva.Children.Add(line);
-                //FigureList.Add(line);
-                //CurrStep++;                
+                FigureArea.Children.Add(line);
             }
-            return newPos;
+            return NewPos;
         }
         public ClassBrokenLine(Canvas Zone) : base(Zone)
         {

@@ -12,39 +12,42 @@ namespace Figures
 {
     class ClassEllipse : AbstractFigure
     {
-        Ellipse rect;
+        Ellipse ellipse;
+
+        public override AbstractFigure GetNew()
+        {
+            return new ClassEllipse(AreaToDraw)
+            {
+                FigureArea = new Canvas()
+            }; 
+        }
+
         public override Point Draw()
         {
-            rect = new Ellipse()
+            ellipse = new Ellipse()
             {
-                StrokeThickness = 2,
-                Width = Math.Abs(prevPos.X - newPos.X),
-                Height = Math.Abs(prevPos.Y - newPos.Y),
-                StrokeStartLineCap = PenLineCap.Round,
-                StrokeEndLineCap = PenLineCap.Round,
-                Stroke = Brushes.Black
-
+                Width = Math.Abs(PrevPos.X - NewPos.X),
+                Height = Math.Abs(PrevPos.Y - NewPos.Y),                
+                StrokeThickness = Thickness,
+                Stroke = BorderColor,
+                Fill = FillColor
             };
 
-            if (prevPos.Y < newPos.Y)
-                Canvas.SetTop(rect, prevPos.Y);
+            if (PrevPos.Y < NewPos.Y)
+                Canvas.SetTop(ellipse, PrevPos.Y);
             else
-                Canvas.SetTop(rect, prevPos.Y - rect.Height);
-            if (prevPos.X < newPos.X)
-                Canvas.SetLeft(rect, prevPos.X);
+                Canvas.SetTop(ellipse, PrevPos.Y - ellipse.Height);
+            if (PrevPos.X < NewPos.X)
+                Canvas.SetLeft(ellipse, PrevPos.X);
             else
-                Canvas.SetLeft(rect, prevPos.X - rect.Width);
-
-            return new Point()
-            {
-                X = -1,
-                Y = -1
-            };
+                Canvas.SetLeft(ellipse, PrevPos.X - ellipse.Width);
+            
+            FigureArea.Children.Add(ellipse);
+            return NullPos;
         }
 
         public ClassEllipse(Canvas Zone) : base(Zone)
         {
-
         }
     }
 }

@@ -9,36 +9,37 @@ namespace Figures
     public class ClassRectangle : AbstractFigure
     {
         Rectangle rect;
+
+        public override AbstractFigure GetNew()
+        {
+            return new ClassRectangle(AreaToDraw)
+            {
+                FigureArea = new Canvas()
+            };
+        }
+
         public override Point Draw()
         {
-            Rectangle rect = new Rectangle()
+            rect = new Rectangle()
             {
-                Height = Math.Abs(prevPos.Y - newPos.Y),
-                Width = Math.Abs(prevPos.X - newPos.X),
-                StrokeThickness = 5,
-                Stroke = Brushes.Black
-
-            };
-
-            if (prevPos.Y < newPos.Y)
-                Canvas.SetTop(rect, prevPos.Y);
+                Height = Math.Abs(PrevPos.Y - NewPos.Y),
+                Width = Math.Abs(PrevPos.X - NewPos.X),
+                StrokeThickness = Thickness,
+                Stroke = BorderColor,
+                Fill = FillColor
+            };          
+            if (PrevPos.Y < NewPos.Y)
+                Canvas.SetTop(rect, PrevPos.Y);
             else
-                Canvas.SetTop(rect, prevPos.Y - rect.Height);
-            if (prevPos.X < newPos.X)
-                Canvas.SetLeft(rect, prevPos.X);
+                Canvas.SetTop(rect, PrevPos.Y - rect.Height);
+            if (PrevPos.X < NewPos.X)
+                Canvas.SetLeft(rect, PrevPos.X);
             else
-                Canvas.SetLeft(rect, prevPos.X - rect.Width);
-            //groupItem.Children.Add(line);
-            //FigureList.Add(rect);
+                Canvas.SetLeft(rect, PrevPos.X - rect.Width);
+
             FigureArea = new Canvas();
             FigureArea.Children.Add(rect);
-            //CurrStep++;
-            AreaToDraw.Children.Add(FigureArea);
-            return new Point()
-            {
-                X = -1,
-                Y = -1
-            };
+            return NullPos;
         }
 
         public ClassRectangle(Canvas Zone) : base(Zone)
