@@ -9,17 +9,13 @@ namespace DrawNamespace
 {
     public class Paint
     {
-        //private SortedSet<AbstractFigure> AvailableFigures;
-
-        private List<AbstractFigure> FigureList;
         static Canvas Canva;
-
         public Point PrevPos;
         public Point NewPos;
 
 
         AbstractFigure ChosenFigure;
-        public Redo_UndoClass rewind;
+        public RedoUndoClass rewind;
 
         public void SetPos(Point pos)
         {
@@ -33,7 +29,7 @@ namespace DrawNamespace
             PrevPos.Y = -1;
             NewPos.X = -1;
             NewPos.Y = -1;
-            ChosenFigure = ChosenFigure.GetNew();
+            //ChosenFigure = ChosenFigure.GetNew();
         }
 
         public void SetFigure(AbstractFigure figure)
@@ -45,12 +41,13 @@ namespace DrawNamespace
         {
             if (PrevPos.X >= 0 && PrevPos.Y >= 0)
             {
-                ChosenFigure = ChosenFigure.GetNew();
-                //ChosenFigure = new (ChosenFigure.GetType()();
+                ChosenFigure = ChosenFigure.Clone() ;
+                //ChosenFigure = new (ChosenFigure.GetType());
+                //typeof(ChosenFigure);
 
-                ChosenFigure.BorderColor = Border;
-                ChosenFigure.FillColor = Fill;
-                ChosenFigure.Thickness = Thickness;
+                //ChosenFigure.BorderColor = Border;
+                //ChosenFigure.FillColor = Fill;
+                //ChosenFigure.Thickness = Thickness;
                 ChosenFigure.NewPos = NewPos;
                 ChosenFigure.PrevPos = PrevPos;
                 NewPos = ChosenFigure.Draw();
@@ -64,14 +61,12 @@ namespace DrawNamespace
 
         public Paint(Canvas canvaToDraw)
         {
-            ChosenFigure = new ClassLine(Canva);
-            AbstractFigure.AreaToDraw = canvaToDraw;
+            ChosenFigure = new MyLine(Canva,2,Brushes.Black,Brushes.White);
+            //AbstractFigure.AreaToDraw = canvaToDraw;
             Canva = canvaToDraw;
-            //pointCollection = new PointCollection();
             NewPos = new Point() { X = -1, Y = -1 };
             PrevPos = new Point() { X = -1, Y = -1 };
-            rewind = new Redo_UndoClass(Canva);
+            rewind = new RedoUndoClass(Canva);
         }
-        //~Paint();
     }
 }

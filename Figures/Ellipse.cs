@@ -10,17 +10,17 @@ using System.Windows.Media;
 
 namespace Figures
 {
-    class ClassEllipse : AbstractFigure
+    class MyEllipse : AbstractFigure
     {
         Ellipse ellipse;
 
-        public override AbstractFigure GetNew()
-        {
-            return new ClassEllipse(AreaToDraw)
-            {
-                FigureArea = new Canvas()
-            }; 
-        }
+        //public override AbstractFigure GetNew()
+        //{
+        //    return new MyEllipse(AreaToDraw)
+        //    {
+        //        FigureArea = new Canvas()
+        //    }; 
+        //}
 
         public override Point Draw()
         {
@@ -46,7 +46,7 @@ namespace Figures
             return NullPos;
         }
 
-        public ClassEllipse(Canvas Zone) : base(Zone)
+        public MyEllipse(double Thickness, Brush Fill, Brush Border) : base(Thickness, Fill, Border)
         {
         }
     }

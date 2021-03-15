@@ -5,21 +5,21 @@ using System.Windows.Shapes;
 
 namespace Figures
 {
-    class ClassLine : AbstractFigure
+    class MyLine : AbstractFigure
     {
         Line line;
 
-        public ClassLine(Canvas Zone) : base(Zone)
+        public MyLine( double Thickness, Brush Fill, Brush Border) : base(Thickness, Fill, Border)
         {
         }
 
-        public override AbstractFigure GetNew()
-        {
-            return new ClassLine(AreaToDraw)
-            {
-                FigureArea = new Canvas()
-            };
-        }
+        //public override AbstractFigure GetNew()
+        //{
+        //    return new MyLine(AreaToDraw)
+        //    {
+        //        FigureArea = new Canvas()
+        //    };
+        //}
 
         public override Point Draw()
         {

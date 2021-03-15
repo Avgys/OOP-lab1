@@ -10,35 +10,62 @@ using System.Windows.Media;
 
 namespace Figures
 {
-    public class AbstractFigure : Object
+
+    
+    public abstract class AbstractFigure : object
     {
-        public static Canvas AreaToDraw;
-        public Canvas FigureArea;
+        public Canvas FigureArea { get;  }
         public Point PrevPos;
         public Point NewPos;
-        public double Thickness;
-        public Brush BorderColor;
-        public Brush FillColor;
-        static protected Point NullPos;
-
+        protected double Thickness;
+        protected Brush BorderColor;
+        protected Brush FillColor;
+        protected Point NullPos;
 
         public virtual Point Draw()
         {
             return NullPos;
         }
 
-        public virtual AbstractFigure GetNew()
-        {
+        //public virtual AbstractFigure GetNew()
+        //{
+        //    //FigureArea = new Canvas();
+        //    return this;
+        //}
 
-            FigureArea = new Canvas();
-            return new AbstractFigure(AreaToDraw);
+        public virtual AbstractFigure Clone()
+        {
+            return (AbstractFigure)this.MemberwiseClone();
         }
+        //{
+        //    //FigureArea = new Canvas();
+        //    return this;
+        //}
 
-        public AbstractFigure(Canvas Zone)
+
+        //public AbstractFigure(Canvas Zone)
+        //{
+        //    NullPos.X = -1;
+        //    NullPos.Y = -1;
+        //    BorderColor = Brushes.Black;
+        //    FillColor = Brushes.White;
+        //}
+
+        public AbstractFigure(double Width = 2, Brush Fill = null, Brush Border = null)
         {
+            if (Border == null)
+            {
+                BorderColor = Brushes.Black;
+            }
+            if (Fill == null)
+            {
+                FillColor = Brushes.White;
+            }
+            
             NullPos.X = -1;
             NullPos.Y = -1;
-            AreaToDraw = Zone;
+            BorderColor = Brushes.Black;
+            FillColor = Brushes.White;            
             //FigureArea.Width = Zone.Width;
             //FigureArea.Height = Zone.Height;
         }

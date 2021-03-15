@@ -5,26 +5,27 @@ using System.Windows.Shapes;
 
 namespace Figures
 {
-    class ClassBrokenLine : AbstractFigure
+    class MyBrokenLine : AbstractFigure
     {
         Line line;
 
-        public override AbstractFigure GetNew()
-        {
-            Canvas buff = FigureArea;
-            if (buff == null)
-            {
-                return new ClassBrokenLine(AreaToDraw)
-                {
-                    FigureArea = new Canvas()
-                };
-            }
-            else
-                return new ClassBrokenLine(AreaToDraw)
-                {
-                    FigureArea = buff
-                };
-        }
+        //public override AbstractFigure GetNew()
+        //{
+            //Canvas buff = FigureArea;
+            //if (buff == null)
+            //{
+            //    return new MyBrokenLine(AreaToDraw)
+            //    {
+            //        FigureArea = new Canvas()
+            //    };
+            //}
+            //else
+            //    return new MyBrokenLine(AreaToDraw)
+            //    {
+            //        FigureArea = buff
+            //    };
+        //    return this;
+        //}
 
         public override Point Draw()
         {
@@ -46,7 +47,9 @@ namespace Figures
             }
             return NewPos;
         }
-        public ClassBrokenLine(Canvas Zone) : base(Zone)
+                
+
+        public MyBrokenLine(Canvas Zone, double Thickness, Brush Fill, Brush Border) : base(Thickness, Fill, Border)
         {
         }
     }

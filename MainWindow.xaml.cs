@@ -61,7 +61,6 @@ namespace Paint_OOP_lab
 
         private void Canva_KeyDown(object sender, KeyEventArgs e)
         {
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -76,27 +75,27 @@ namespace Paint_OOP_lab
 
         private void Polygon_Click(object sender, RoutedEventArgs e)
         {
-            paint.SetFigure(new ClassPolygon(Canva));
+            paint.SetFigure(new MyPolygon(Canva));
         }
 
         private void Rectangle_Click(object sender, RoutedEventArgs e)
         {
-            paint.SetFigure(new ClassRectangle(Canva));
+            paint.SetFigure(new MyRectangle(Canva));
         }
 
         private void Ellipes_Click(object sender, RoutedEventArgs e)
         {
-            paint.SetFigure(new ClassEllipse(Canva));
+            paint.SetFigure(new MyEllipse(Canva));
         }
 
         private void Line_Click(object sender, RoutedEventArgs e)
         {
-            paint.SetFigure(new ClassLine(Canva));
+            paint.SetFigure(new MyLine(Canva));
         }
 
         private void BrokenLine_Click(object sender, RoutedEventArgs e)
         {
-            paint.SetFigure(new ClassBrokenLine(Canva));
+            paint.SetFigure(new MyBrokenLine(Canva));
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
