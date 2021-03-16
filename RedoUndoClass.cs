@@ -5,7 +5,7 @@ namespace DrawNamespace
 {
     using Figures;
 
-    public class Redo_UndoClass
+    public class RedoUndoClass
     {
         private int CurrStep;
         private List<AbstractFigure> FigureList;
@@ -46,7 +46,7 @@ namespace DrawNamespace
             }
         }
 
-        public Redo_UndoClass(Canvas AreaToDraw)
+        public RedoUndoClass(Canvas AreaToDraw)
         {
             CurrStep = -1;
             FigureList = new List<AbstractFigure>();

@@ -9,9 +9,7 @@ namespace DrawNamespace
 {
     public class Paint
     {
-        //private SortedSet<AbstractFigure> AvailableFigures;
-
-        private List<AbstractFigure> FigureList;
+        //private List<AbstractFigure> FigureList;
         static Canvas Canva;
 
         public Point PrevPos;
@@ -19,7 +17,7 @@ namespace DrawNamespace
 
 
         AbstractFigure ChosenFigure;
-        public Redo_UndoClass rewind;
+        public RedoUndoClass rewind;
 
         public void SetPos(Point pos)
         {
@@ -46,7 +44,7 @@ namespace DrawNamespace
             if (PrevPos.X >= 0 && PrevPos.Y >= 0)
             {
                 ChosenFigure = ChosenFigure.GetNew();
-                //ChosenFigure = new (ChosenFigure.GetType()();
+                //ChosenFigure = new(ChosenFigure.GetType);
 
                 ChosenFigure.BorderColor = Border;
                 ChosenFigure.FillColor = Fill;
@@ -70,7 +68,7 @@ namespace DrawNamespace
             //pointCollection = new PointCollection();
             NewPos = new Point() { X = -1, Y = -1 };
             PrevPos = new Point() { X = -1, Y = -1 };
-            rewind = new Redo_UndoClass(Canva);
+            rewind = new RedoUndoClass(Canva);
         }
         //~Paint();
     }

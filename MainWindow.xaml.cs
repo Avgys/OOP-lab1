@@ -31,19 +31,19 @@ namespace Paint_OOP_lab
         {
             paint.SetPos(e.GetPosition(Canva));
             SolidColorBrush LineBrush;
-            if (SelectedLineColor.SelectedColor == null)
-            {
-                LineBrush = Brushes.Black;
-            }
-            else
-                LineBrush = new SolidColorBrush((Color)SelectedLineColor.SelectedColor);
+            //if (SelectedLineColor.SelectedColor == null)
+            //{
+            LineBrush = Brushes.Black;
+            //}
+            //else
+            //    LineBrush = new SolidColorBrush((Color)SelectedLineColor.SelectedColor);
             SolidColorBrush FillBrush;
-            if (SelectedFillColor.SelectedColor == null)
-            {
-                FillBrush = Brushes.White;
-            }
-            else
-                FillBrush = new SolidColorBrush((Color)SelectedFillColor.SelectedColor);
+            //if (SelectedFillColor.SelectedColor == null)
+            //{
+            FillBrush = Brushes.White;
+            //}
+            //else
+            //    FillBrush = new SolidColorBrush((Color)SelectedFillColor.SelectedColor);
             paint.DrawCurrentFigure(Convert.ToDouble(StrokeWidth.Text), FillBrush, LineBrush);
         }
 
